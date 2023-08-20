@@ -54,10 +54,10 @@ app.post('/api/notes', (request, response, next) => {
 	})
 
 	note.save()
-			.then(savedNote => {
-				response.json(savedNote)
-			})
-			.catch(error => next(error))
+		.then(savedNote => {
+			response.json(savedNote)
+		})
+		.catch(error => next(error))
 })
 
 app.get('/api/notes/:id', (request, response, next) => {
@@ -89,14 +89,14 @@ app.put('/api/notes/:id', (request, response, next) => {
 	} */
 
 	Note.findByIdAndUpdate(
-				request.params.id,
-				{content, important}, 
-				{ new: true , runValidators: true, context:'query'}
-			)
-			.then(updatedNote => {
-				response.json(updatedNote)
-			})
-			.catch(error => next(error))
+			request.params.id,
+			{content, important}, 
+			{ new: true , runValidators: true, context:'query'}
+		)
+		.then(updatedNote => {
+			response.json(updatedNote)
+		})
+		.catch(error => next(error))
 })
 
 app.use(unknownEndpoint)
